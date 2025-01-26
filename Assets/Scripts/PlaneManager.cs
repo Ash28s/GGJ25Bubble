@@ -27,6 +27,19 @@ public class PlaneManager : MonoBehaviour
         // Ensure planes are ordered by index
         System.Array.Sort(allPlanes, (a, b) => a.planeIndex.CompareTo(b.planeIndex));
 
+        // Turn off all colliders initially
+        foreach (var plane in allPlanes)
+        {
+            if (plane != null)
+            {
+                Collider2D collider = plane.GetComponent<Collider2D>();
+                if (collider != null)
+                {
+                    collider.enabled = false; // Disable the collider
+                }
+            }
+        }
+
         // Enable the first plane
         ActivatePlane(0);
     }
@@ -37,8 +50,12 @@ public class PlaneManager : MonoBehaviour
         if (currentPlaneIndex < allPlanes.Length && allPlanes[currentPlaneIndex] != null)
         {
             allPlanes[currentPlaneIndex].EnableControl(false);
-            // Set the current plane tag to default or another tag
-            allPlanes[currentPlaneIndex].gameObject.tag = "Untagged"; // Or use another tag if needed
+            allPlanes[currentPlaneIndex].gameObject.tag = "Untagged"; // Set the tag to default
+            Collider2D collider = allPlanes[currentPlaneIndex].GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false; // Disable the collider
+            }
         }
 
         // Move to the next plane
@@ -63,8 +80,12 @@ public class PlaneManager : MonoBehaviour
 
         currentPlaneIndex = index;
         allPlanes[index].EnableControl(true);
-        // Set the active plane's tag to "Player"
-        allPlanes[index].gameObject.tag = "Player"; // Set the Player tag
+        allPlanes[index].gameObject.tag = "Player"; // Set the active plane's tag to "Player"
+        Collider2D collider = allPlanes[index].GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = true; // Enable the collider
+        }
 
         Debug.Log($"Plane {index} activated.");
     }
