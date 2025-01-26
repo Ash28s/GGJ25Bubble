@@ -84,6 +84,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Bosses\Scripts\LogoManager.cs" />
     <Compile Include="Assets\Bosses\Scripts\LogoPart.cs" />
+    <Compile Include="Assets\Ash ke assests\Scripts\LastScriptsWiningkebaad.cs" />
     <Compile Include="Assets\Bosses\Scripts\PlayerPlayer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
